@@ -7,6 +7,7 @@ import { connectDB, getClient } from "./db/connection.js";
 import { createIndexes } from "./db/indexes.js";
 import passport from "./auth/passport.js";
 import authRouter from "./routes/authRouter.js";
+import subletsRouter from "./routes/subletsRouter.js";
 import errorHandler from "./middleware/errorHandler.js";
 
 for (const name of ["MONGO_URI", "SESSION_SECRET"]) {
@@ -53,6 +54,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 app.use("/api/auth", authRouter);
+app.use("/api/sublets", subletsRouter);
 
 app.use("/api", (req, res) => {
   res.status(404).json({ error: "Not found" });
