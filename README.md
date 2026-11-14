@@ -2,6 +2,8 @@
 
 Sublets and roommates for Northeastern students.
 
+![SubletBoard search page](screenshots/thumbnail.png)
+
 ## Authors
 
 - Jiaying Guo
@@ -13,29 +15,102 @@ Sublets and roommates for Northeastern students.
 
 ## Project Objective
 
-Many Northeastern students leave Boston for a co-op or a semester and need someone to take their room, while new students need a short-term place to stay or someone to split rent with. Right now this happens in messy Facebook groups and group chats. SubletBoard gives students one place to post and find sublets, and to find a roommate who fits their budget and lifestyle.
+Many Northeastern students leave Boston for a co-op or a semester and need someone to take their room, while new students need a short-term place to stay or someone to split rent with. Right now this happens in messy Facebook groups and group chats, where posts get buried and are hard to search. SubletBoard gives students one place to post and find sublets, and to find a roommate who fits their budget and lifestyle.
 
 ## Features
 
 ### Sublet listings (Jiaying Guo)
 
-- Sign up and log in. Only the author can edit or delete their own listings.
-- Post a sublet with a title, neighborhood, rent, start and end dates, furnished or not, commute time to campus, a photo link and a description. Edit or delete it later.
-- Search sublets by neighborhood, price range, dates and furnished, and sort by newest or price.
-- Open a listing to see its details. Logged-in students can see the poster's contact email.
-- See all your listings on the My Listings page, and mark a listing as rented so it is hidden from search.
+- Sign up and log in with an email and password. Only the author can edit or delete their own listings.
+- Post a sublet with a title, neighborhood, monthly rent, start and end dates, furnished or not, commute time to campus, a photo link and a description. Edit or delete it later.
+- Search sublets by neighborhood (more than one at a time), price range, move-in and move-out dates, and furnished. Sort by newest or by price, 12 results per page. The search is kept in the address bar, so the back button, refresh and shared links all work.
+- Open a listing to see its details. Students who are logged in can see the poster's contact email.
+- See all your listings on the My Listings page, and mark a listing as rented. Rented listings are hidden from search and no longer show the email, so people stop writing.
 
 ### Roommate profiles (Yanli Wang)
 
 - Create, edit and delete a roommate profile, and hide or show it in search.
 - Search profiles by budget, neighborhood, move-in date, sleep schedule, pets and smoking.
 
+## Screenshots
+
+Home page with instructions:
+
+![Home page](screenshots/1-home.png)
+
+Search with filters (Fenway or Mission Hill, up to $1,800, January 5 to April 30):
+
+![Search](screenshots/2-search.png)
+
+Listing details, logged in:
+
+![Listing details](screenshots/3-listing-detail.png)
+
+Posting a sublet:
+
+![Post a sublet](screenshots/4-post-sublet.png)
+
+My Listings, with one listing marked as rented:
+
+![My Listings](screenshots/5-my-listings.png)
+
+On a phone:
+
+![Phone](screenshots/6-mobile.png)
+
+## Links
+
+- Design document and mockups: [design/DesignDocument.md](design/DesignDocument.md)
+
+## How to Use
+
+You can browse and search without an account. To post a sublet or see a contact email, sign up or use the demo account:
+
+- Email: `demo@subletboard.app`
+- Password: `demo1234`
+
+1. **Find a room:** open **Find a Sublet**, choose neighborhoods, a price range, your move-in and move-out dates and furnished, then click **Search**. Click a listing to see the details and the poster's email.
+2. **Post your room:** click **Post a Sublet**, fill in the form and click **Post listing**.
+3. **Manage your rooms:** open **My Listings** to edit or delete a listing, or click **Mark as rented** when someone takes the room.
+
+The deployed app runs on Render's free plan. If it has not been used for a while, the first page can take about a minute to load.
+
 ## Tech Stack
 
-- Frontend: React (hooks), React Router, Fetch API, Vite
-- Backend: Node.js, Express
+- Frontend: React (hooks), React Router, Fetch API, PropTypes, Vite
+- Backend: Node.js, Express 5
 - Authentication: Passport (local strategy) with sessions saved in MongoDB (connect-mongo)
 - Database: MongoDB (native Node.js driver)
+- Synthetic data: @faker-js/faker
+
+## Data
+
+| Collection  | Records                                   | Notes                                              |
+| ----------- | ----------------------------------------- | -------------------------------------------------- |
+| `sublets`   | 1,200 synthetic listings, plus user posts | Full create, read, update and delete (Jiaying Guo) |
+| `roommates` | Synthetic profiles, plus user profiles    | Full create, read, update and delete (Yanli Wang)  |
+| `users`     | 101 synthetic students (one is the demo)  | Passwords are hashed with scrypt                   |
+| `sessions`  | Login sessions                            | Created by connect-mongo, expire after 7 days      |
+
+The seed scripts use a fixed Faker seed, so they create the same data every time. They only replace records marked `seeded: true`, so real accounts and listings are kept. The sample listings use room pictures that come with the app (`frontend/public/rooms`).
+
+## API
+
+All responses are JSON. Errors look like `{ "error": "message" }`.
+
+| Method | Path                      | Who       | Description                                                                                                                                                        |
+| ------ | ------------------------- | --------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| POST   | `/api/auth/signup`        | Anyone    | Create an account and log in                                                                                                                                       |
+| POST   | `/api/auth/login`         | Anyone    | Log in with email and password                                                                                                                                     |
+| POST   | `/api/auth/logout`        | Logged in | Log out                                                                                                                                                            |
+| GET    | `/api/auth/me`            | Anyone    | The current user, or `null`                                                                                                                                        |
+| GET    | `/api/sublets`            | Anyone    | Search: `neighborhood` (repeat for more), `minRent`, `maxRent`, `moveIn`, `moveOut`, `furnished=true`, `sort` (`newest`, `rent_asc`, `rent_desc`), `page`, `limit` |
+| GET    | `/api/sublets/mine`       | Logged in | Your listings, including rented ones                                                                                                                               |
+| GET    | `/api/sublets/:id`        | Anyone    | One listing. The email is included for logged-in users while it is available                                                                                       |
+| POST   | `/api/sublets`            | Logged in | Create a listing                                                                                                                                                   |
+| PUT    | `/api/sublets/:id`        | Author    | Edit a listing                                                                                                                                                     |
+| PATCH  | `/api/sublets/:id/status` | Author    | `{ "status": "rented" }` or `{ "status": "available" }`                                                                                                            |
+| DELETE | `/api/sublets/:id`        | Author    | Delete a listing                                                                                                                                                   |
 
 ## Instructions to Build
 
@@ -56,26 +131,40 @@ You need Node.js 20 or newer and a MongoDB database (for example a free MongoDB 
    cp .env.example .env
    ```
 
-3. Set up the frontend.
+3. Load the synthetic data (users and sublet listings together).
+
+   ```bash
+   npm run seed
+   ```
+
+   `npm run seed:demo` resets only the demo account's listings.
+
+4. Set up the frontend.
 
    ```bash
    cd ../frontend
    npm install
    ```
 
-4. Run both in development, each in its own terminal. Open the address that Vite prints (usually http://localhost:5173). Vite sends `/api` requests to the Express server on port 3000.
+5. Run both in development, each in its own terminal, and open the address that Vite prints (usually http://localhost:5173). Vite sends `/api` requests to the Express server on port 3000.
 
    ```bash
    cd backend && npm run dev
    cd frontend && npm run dev
    ```
 
-5. To run it like production, build the frontend and start the backend. Express serves the built app at http://localhost:3000.
+6. To run it like production, build the frontend and start the backend. Express serves the built app at http://localhost:3000.
 
    ```bash
    cd frontend && npm run build
    cd ../backend && npm start
    ```
+
+### Deploying on Render
+
+- Build command: `cd frontend && npm ci --include=dev && npm run build && cd ../backend && npm ci`
+- Start command: `cd backend && npm start`
+- Environment variables: `MONGO_URI`, `DB_NAME`, `SESSION_SECRET`, `NODE_ENV=production`, `NODE_VERSION=24`
 
 ### Lint and format
 
@@ -89,19 +178,28 @@ npm run format:check
 ## Project Structure
 
 ```
-backend/            Express API
-  server.js         App entry point
-  db/               MongoDB connection, indexes and queries
-  middleware/       Error handler
-  constants/        Shared lists (neighborhoods, demo account)
-  utils/            Helpers (date validation)
-frontend/           React app built with Vite
-  src/App.jsx       App entry component
-  src/constants/    Shared lists (neighborhoods)
-design/             Design document and mockups
+backend/
+  server.js           App entry point: sessions, Passport, routes, built frontend
+  auth/               Passport local strategy and password hashing
+  db/                 MongoDB connection, indexes and queries
+  routes/             API routes (auth, sublets)
+  middleware/         Login check and error handler
+  utils/              Validation, search query and date helpers
+  constants/          Neighborhoods and the demo account
+  scripts/            Seed scripts for the synthetic data
+frontend/
+  public/             Favicon, sample room pictures, "no photo" picture
+  src/App.jsx         Routes
+  src/api/            Fetch helpers for the API
+  src/context/        Login state (AuthProvider and useAuth)
+  src/components/     Reusable components
+  src/pages/          One folder per page
+  src/utils/          Formatting and search helpers
+design/               Design document and mockups
+screenshots/          Pictures used in this README
 ```
 
-Each React component lives in its own folder together with its CSS file of the same name.
+Each React component is in its own folder, together with its CSS file of the same name, which the component imports.
 
 ## AI Disclosure
 
