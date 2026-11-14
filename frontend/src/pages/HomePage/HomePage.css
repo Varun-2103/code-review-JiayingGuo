@@ -1,5 +1,5 @@
 .home-hero {
-  padding: 48px 0 24px;
+  padding: 40px 0 24px;
   max-width: 720px;
 }
 
@@ -32,4 +32,35 @@
 
 .home-actions .home-primary:hover {
   background: var(--color-primary-dark);
+}
+
+.home-guide {
+  margin-top: 16px;
+  padding: 24px;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+}
+
+.home-guide h2 {
+  margin-top: 0;
+}
+
+.home-guide-columns {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 8px 32px;
+}
+
+.home-guide h3 {
+  margin-bottom: 8px;
+}
+
+.home-guide ol {
+  margin: 0;
+  padding-left: 20px;
+}
+
+.home-guide li {
+  margin-bottom: 6px;
 }

@@ -89,6 +89,8 @@ const DESCRIPTION_PARTS = {
   ],
 };
 
+const ROOM_PICTURES = 8;
+
 const MONTHS = [
   "Jan",
   "Feb",
@@ -153,7 +155,8 @@ export function generateSublet(faker, author, index) {
     endDate,
     furnished,
     commuteMinutes,
-    photoUrl: `https://picsum.photos/seed/subletboard-${index}/600/400`,
+    // Sample pictures served by the app itself (frontend/public/rooms).
+    photoUrl: `/rooms/room-${(index % ROOM_PICTURES) + 1}.svg`,
     description,
     status: faker.datatype.boolean({ probability: 0.15 })
       ? "rented"

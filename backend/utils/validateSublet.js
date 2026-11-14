@@ -2,6 +2,9 @@ import { NEIGHBORHOODS } from "../constants/neighborhoods.js";
 import { isValidDateString } from "./dates.js";
 
 const isWholeNumber = (n) => typeof n === "number" && Number.isInteger(n);
+// A web link, or one of the sample room pictures the app ships with
+// (used by the seed data, so it does not depend on an outside photo site).
+const PHOTO_PATTERN = /^(https?:\/\/\S+|\/rooms\/room-\d{1,2}\.svg)$/i;
 const isText = (s, min, max) =>
   typeof s === "string" && s.trim().length >= min && s.trim().length <= max;
 
@@ -54,7 +57,7 @@ export function validateSublet(body) {
   if (
     typeof photoUrl !== "string" ||
     photoUrl.trim().length > 500 ||
-    (photoUrl.trim() !== "" && !/^https?:\/\/\S+$/i.test(photoUrl.trim()))
+    (photoUrl.trim() !== "" && !PHOTO_PATTERN.test(photoUrl.trim()))
   ) {
     return { error: "Photo link must start with http:// or https://" };
   }

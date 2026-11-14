@@ -1,0 +1,102 @@
+.sublet-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  transition: box-shadow 0.15s;
+}
+
+.sublet-card:hover,
+.sublet-card:focus-within {
+  box-shadow: 0 4px 12px rgb(0 0 0 / 0.15);
+}
+
+.sublet-card-body {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 12px 16px 16px;
+  flex: 1;
+}
+
+.sublet-card-rent {
+  margin: 0;
+  color: var(--color-muted);
+}
+
+.sublet-card-rent strong {
+  font-size: 1.25rem;
+  color: var(--color-text);
+}
+
+.sublet-card-title {
+  margin: 0;
+  font-size: 1rem;
+  line-height: 1.35;
+}
+
+.sublet-card-title a {
+  color: var(--color-text);
+  text-decoration: none;
+}
+
+/* The title link covers the whole card, so any click opens the listing. */
+.sublet-card-title a::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+}
+
+.sublet-card-title a:focus-visible {
+  outline: none;
+}
+
+.sublet-card:has(.sublet-card-title a:focus-visible) {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+.sublet-card-facts {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-size: 0.9375rem;
+  color: var(--color-muted);
+}
+
+.sublet-card-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin: 4px 0 0;
+}
+
+.sublet-card-tag {
+  display: inline-block;
+  padding: 2px 10px;
+  border-radius: 999px;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  background: #ddf4ff;
+  color: #0969da;
+}
+
+/* Buttons sit above the card-wide link so they stay clickable.
+   The first button takes the full row, the others share the next row. */
+.sublet-card-actions {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  margin-top: auto;
+  padding-top: 12px;
+}
+
+.sublet-card-actions > :first-child {
+  grid-column: 1 / -1;
+}

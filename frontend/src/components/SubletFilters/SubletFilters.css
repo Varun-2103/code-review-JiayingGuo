@@ -1,0 +1,102 @@
+.sublet-filters {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 16px;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+}
+
+.sublet-filters label {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-weight: 600;
+  font-size: 0.9375rem;
+}
+
+.sublet-filters input[type="number"],
+.sublet-filters input[type="date"],
+.sublet-filters select {
+  width: 100%;
+  min-width: 0;
+  padding: 8px 10px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  font-weight: 400;
+  background: var(--color-surface);
+}
+
+.sublet-filters fieldset {
+  margin: 0;
+  padding: 0;
+  border: none;
+  min-width: 0;
+}
+
+.sublet-filters legend {
+  padding: 0;
+  margin-bottom: 4px;
+  font-weight: 600;
+  font-size: 0.9375rem;
+}
+
+/* Two boxes side by side when there is room. Date boxes need about 140px,
+   so in the narrow desktop sidebar they stack instead of overflowing. */
+.filters-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 140px), 1fr));
+  gap: 8px;
+}
+
+.filters-row:has(input[type="number"]) {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.filters-row legend {
+  grid-column: 1 / -1;
+}
+
+.filters-row label {
+  font-weight: 400;
+  color: var(--color-muted);
+}
+
+.sublet-filters .filters-check {
+  flex-direction: row;
+  align-items: center;
+  gap: 8px;
+  font-weight: 400;
+}
+
+.filters-neighborhoods summary {
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 0.9375rem;
+}
+
+.filters-neighborhoods fieldset {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4px 8px;
+  margin-top: 8px;
+}
+
+.filters-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.filters-actions .button {
+  flex: 1;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}

@@ -1,0 +1,98 @@
+.sublet-detail-back {
+  margin-top: 0;
+}
+
+.sublet-detail-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+  gap: 32px;
+  align-items: start;
+}
+
+.sublet-detail-photo {
+  border-radius: var(--radius);
+}
+
+.sublet-detail-info h1 {
+  margin: 8px 0;
+  font-size: 1.75rem;
+  line-height: 1.25;
+}
+
+.sublet-detail-status {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0;
+  color: var(--color-muted);
+}
+
+.sublet-detail-rent {
+  margin: 0 0 16px;
+  color: var(--color-muted);
+}
+
+.sublet-detail-rent strong {
+  font-size: 1.5rem;
+  color: var(--color-text);
+}
+
+.sublet-detail-facts {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin: 0 0 24px;
+}
+
+.sublet-detail-facts dt {
+  font-size: 0.875rem;
+  color: var(--color-muted);
+}
+
+.sublet-detail-facts dd {
+  margin: 0;
+  font-weight: 600;
+}
+
+.sublet-detail-contact,
+.sublet-detail-owner {
+  padding: 16px;
+  margin-bottom: 16px;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+}
+
+.sublet-detail-contact h2,
+.sublet-detail-owner h2,
+.sublet-detail-description h2 {
+  margin: 0 0 8px;
+  font-size: 1.125rem;
+}
+
+.sublet-detail-contact p {
+  margin: 4px 0;
+  overflow-wrap: anywhere;
+}
+
+.sublet-detail-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.sublet-detail-description {
+  max-width: 720px;
+  margin-top: 32px;
+}
+
+.sublet-detail-description p {
+  white-space: pre-line;
+}
+
+@media (max-width: 760px) {
+  .sublet-detail-layout {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+}

@@ -1,0 +1,73 @@
+.sublet-form {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px 20px;
+  padding: 24px;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+}
+
+.sublet-form > .error-message,
+.sublet-form-wide {
+  grid-column: 1 / -1;
+}
+
+.sublet-form > .error-message {
+  margin: 0;
+}
+
+.sublet-form label {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-weight: 600;
+}
+
+.sublet-form input:not([type="checkbox"]),
+.sublet-form select,
+.sublet-form textarea {
+  width: 100%;
+  min-width: 0;
+  padding: 10px 12px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  font-weight: 400;
+  background: var(--color-surface);
+}
+
+.sublet-form textarea {
+  resize: vertical;
+}
+
+.sublet-form input:focus,
+.sublet-form select:focus,
+.sublet-form textarea:focus {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 1px;
+}
+
+.sublet-form .hint {
+  font-weight: 400;
+  font-size: 0.875rem;
+  color: var(--color-muted);
+}
+
+.sublet-form-count {
+  align-self: flex-end;
+}
+
+.sublet-form .sublet-form-check {
+  flex-direction: row;
+  align-items: center;
+  gap: 8px;
+  align-self: end;
+  padding-bottom: 10px;
+}
+
+@media (max-width: 640px) {
+  .sublet-form {
+    grid-template-columns: 1fr;
+    padding: 16px;
+  }
+}

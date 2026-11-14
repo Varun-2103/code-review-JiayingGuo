@@ -29,6 +29,10 @@ function NavBar() {
         </Link>
 
         <nav className="navbar-links" aria-label="Main">
+          <NavLink to="/sublets" end>
+            Find a Sublet
+          </NavLink>
+          <NavLink to="/sublets/new">Post a Sublet</NavLink>
           {user && <NavLink to="/my-listings">My Listings</NavLink>}
         </nav>
 
