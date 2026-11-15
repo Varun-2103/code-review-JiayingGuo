@@ -89,7 +89,7 @@ const DESCRIPTION_PARTS = {
   ],
 };
 
-const ROOM_PICTURES = 8;
+const ROOM_PICTURES = 20;
 
 const MONTHS = [
   "Jan",
@@ -156,7 +156,7 @@ export function generateSublet(faker, author, index) {
     furnished,
     commuteMinutes,
     // Sample pictures served by the app itself (frontend/public/rooms).
-    photoUrl: `/rooms/room-${(index % ROOM_PICTURES) + 1}.svg`,
+    photoUrl: `/rooms/room-${(index % ROOM_PICTURES) + 1}.jpg`,
     description,
     status: faker.datatype.boolean({ probability: 0.15 })
       ? "rented"

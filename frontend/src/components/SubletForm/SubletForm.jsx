@@ -17,7 +17,7 @@ const EMPTY_VALUES = {
 
 const DESCRIPTION_MAX = 1000;
 // A web link, or one of the sample room pictures in public/rooms.
-const PHOTO_PATTERN = /^(https?:\/\/\S+|\/rooms\/room-\d{1,2}\.svg)$/i;
+const PHOTO_PATTERN = /^(https?:\/\/\S+|\/rooms\/room-\d{1,2}\.jpg)$/i;
 
 // Same rules as the server, so most mistakes are shown before sending.
 function checkValues(v) {

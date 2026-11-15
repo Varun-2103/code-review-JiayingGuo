@@ -93,7 +93,7 @@ The deployed app runs on Render's free plan. If it has not been used for a while
 | `users`     | 101 synthetic students (one is the demo)  | Passwords are hashed with scrypt                   |
 | `sessions`  | Login sessions                            | Created by connect-mongo, expire after 7 days      |
 
-The seed scripts use a fixed Faker seed, so they create the same data every time. They only replace records marked `seeded: true`, so real accounts and listings are kept. The sample listings use room pictures that come with the app (`frontend/public/rooms`).
+The seed scripts use a fixed Faker seed, so they create the same data every time. They only replace records marked `seeded: true`, so real accounts and listings are kept. The sample listings use 20 room photos that come with the app (`frontend/public/rooms`). The photos are AI generated and do not show real apartments.
 
 ## API
 
