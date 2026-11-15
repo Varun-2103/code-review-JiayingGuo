@@ -1,0 +1,43 @@
+.sublet-skeleton {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  align-content: start;
+  gap: 12px;
+  padding: 8px 8px 24px;
+  border-radius: var(--radius-lg);
+  background: var(--color-surface);
+}
+
+.sublet-skeleton-block {
+  border-radius: var(--radius-md);
+  background: var(--color-surface-2);
+  animation: sublet-skeleton-pulse 1600ms var(--ease) infinite;
+}
+
+.sublet-skeleton-photo {
+  aspect-ratio: 3 / 2;
+}
+
+.sublet-skeleton-price {
+  width: 40%;
+  height: 24px;
+  margin-left: 8px;
+}
+
+.sublet-skeleton-title {
+  width: 80%;
+  height: 20px;
+  margin-left: 8px;
+}
+
+.sublet-skeleton-line {
+  width: 60%;
+  height: 16px;
+  margin-left: 8px;
+}
+
+@keyframes sublet-skeleton-pulse {
+  50% {
+    opacity: 0.5;
+  }
+}

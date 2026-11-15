@@ -1,0 +1,18 @@
+.status-badge {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: var(--radius-sm);
+  font-size: 12px;
+  line-height: 16px;
+  font-weight: 600;
+}
+
+.status-badge-available {
+  background: var(--color-accent-soft);
+  color: var(--color-accent-text);
+}
+
+.status-badge-rented {
+  background: var(--color-surface-2);
+  color: var(--color-muted);
+}

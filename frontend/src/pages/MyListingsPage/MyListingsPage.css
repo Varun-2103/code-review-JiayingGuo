@@ -1,0 +1,54 @@
+.my-listings-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.my-listings-header h1 {
+  margin: 0 0 4px;
+  font-size: 30px;
+  line-height: 36px;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+.my-listings-header p {
+  margin: 0;
+  font-size: 14px;
+  line-height: 20px;
+}
+
+.my-listings-page > .error-message {
+  margin-bottom: 16px;
+}
+
+.my-listings-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 260px), 1fr));
+  gap: 24px;
+}
+
+/* Shown before the first listing is posted. */
+.my-listings-empty {
+  display: grid;
+  gap: 8px;
+  justify-items: start;
+  padding: 40px;
+  border-radius: var(--radius-lg);
+  background: var(--color-surface);
+}
+
+.my-listings-empty h2 {
+  margin: 0;
+  font-size: 20px;
+  line-height: 28px;
+  font-weight: 600;
+}
+
+.my-listings-empty p {
+  margin: 0 0 8px;
+  color: var(--color-muted);
+}

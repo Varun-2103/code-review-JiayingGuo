@@ -1,0 +1,182 @@
+.sublet-detail-back {
+  margin: 0 0 24px;
+  font-size: 14px;
+  line-height: 20px;
+}
+
+.sublet-detail-back a {
+  color: var(--color-muted);
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.sublet-detail-back a:hover {
+  color: var(--color-text);
+}
+
+.sublet-detail-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+  gap: 32px;
+  align-items: start;
+}
+
+.sublet-detail-photo {
+  border-radius: var(--radius-lg);
+}
+
+.sublet-detail-info {
+  display: grid;
+  gap: 16px;
+  padding: 24px;
+  border-radius: var(--radius-lg);
+  background: var(--color-surface);
+}
+
+.sublet-detail-status {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0;
+}
+
+/* Same look as a card tag */
+.sublet-detail-status span:not(.status-badge) {
+  padding: 2px 8px;
+  border-radius: var(--radius-sm);
+  background: var(--color-surface-2);
+  color: var(--color-muted);
+  font-size: 12px;
+  line-height: 16px;
+  font-weight: 600;
+}
+
+.sublet-detail-info h1 {
+  margin: 0;
+  font-size: 30px;
+  line-height: 36px;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+.sublet-detail-rent {
+  margin: 0;
+  color: var(--color-muted);
+  font-size: 14px;
+  line-height: 20px;
+}
+
+.sublet-detail-rent strong {
+  color: var(--color-text);
+  font-size: 24px;
+  line-height: 32px;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+
+.sublet-detail-facts {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin: 0;
+}
+
+.sublet-detail-facts dt {
+  color: var(--color-muted);
+  font-size: 12px;
+  line-height: 16px;
+  font-weight: 500;
+}
+
+.sublet-detail-facts dd {
+  margin: 0;
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 600;
+}
+
+.sublet-detail-contact,
+.sublet-detail-owner {
+  display: grid;
+  gap: 8px;
+  padding: 16px;
+  border-radius: var(--radius-md);
+  background: var(--color-surface-2);
+}
+
+.sublet-detail-contact h2,
+.sublet-detail-owner h2 {
+  margin: 0;
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 600;
+}
+
+.sublet-detail-contact p {
+  margin: 0;
+  font-size: 14px;
+  line-height: 20px;
+  overflow-wrap: anywhere;
+}
+
+.sublet-detail-contact a {
+  font-weight: 600;
+}
+
+.sublet-detail-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+/* The block behind these buttons is already the secondary color. */
+.sublet-detail-actions .button-secondary {
+  background: var(--color-surface);
+}
+
+.sublet-detail-actions .button-secondary:hover {
+  background: var(--color-hover);
+}
+
+.sublet-detail-description {
+  max-width: 680px;
+  margin-top: 48px;
+}
+
+.sublet-detail-description h2 {
+  margin: 0 0 12px;
+  font-size: 20px;
+  line-height: 28px;
+  font-weight: 600;
+}
+
+.sublet-detail-description p {
+  margin: 0;
+  color: var(--color-muted);
+  white-space: pre-line;
+}
+
+.sublet-detail-error {
+  display: grid;
+  gap: 16px;
+  justify-items: start;
+  max-width: 680px;
+}
+
+.sublet-detail-error h1 {
+  margin: 0;
+  font-size: 30px;
+  line-height: 36px;
+  font-weight: 600;
+}
+
+@media (max-width: 760px) {
+  .sublet-detail-layout {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .sublet-detail-info {
+    padding: 16px;
+  }
+}
