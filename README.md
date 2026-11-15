@@ -38,7 +38,7 @@ Home page with instructions:
 
 ![Home page](screenshots/1-home.png)
 
-Search with filters (Fenway or Mission Hill, up to $1,800, January 5 to April 30):
+Search with filters (Fenway or Longwood, up to $1,800, January 5 to April 30):
 
 ![Search](screenshots/2-search.png)
 
