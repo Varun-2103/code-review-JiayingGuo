@@ -107,7 +107,7 @@ function SubletFilters({ initialValues, onApply }) {
             id="filter-min-rent"
             type="number"
             min="0"
-            step="50"
+            step="1"
             inputMode="numeric"
             value={values.minRent}
             onChange={(e) => setField("minRent", e.target.value)}
@@ -119,7 +119,7 @@ function SubletFilters({ initialValues, onApply }) {
             id="filter-max-rent"
             type="number"
             min="0"
-            step="50"
+            step="1"
             inputMode="numeric"
             value={values.maxRent}
             onChange={(e) => setField("maxRent", e.target.value)}

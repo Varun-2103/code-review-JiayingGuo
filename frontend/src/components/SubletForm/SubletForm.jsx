@@ -179,6 +179,9 @@ function SubletForm({ initialValues, onSubmit, submitLabel }) {
 
       <label htmlFor="sublet-commute">
         Commute to campus (minutes)
+        <span className="hint">
+          Time to the Northeastern Boston campus by walking or the T
+        </span>
         <input
           id="sublet-commute"
           name="commuteMinutes"

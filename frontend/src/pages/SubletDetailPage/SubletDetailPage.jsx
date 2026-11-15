@@ -117,7 +117,7 @@ function SubletDetailPage() {
               <dd>{formatDateRange(sublet.startDate, sublet.endDate)}</dd>
             </div>
             <div>
-              <dt>Commute to campus</dt>
+              <dt>Commute to Northeastern</dt>
               <dd>{sublet.commuteMinutes} minutes</dd>
             </div>
             <div>
