@@ -112,6 +112,7 @@ All responses are JSON. Errors look like `{ "error": "message" }`.
 | PUT    | `/api/sublets/:id`        | Author    | Edit a listing                                                                                                                                                     |
 | PATCH  | `/api/sublets/:id/status` | Author    | `{ "status": "rented" }` or `{ "status": "available" }`                                                                                                            |
 | DELETE | `/api/sublets/:id`        | Author    | Delete a listing                                                                                                                                                   |
+| GET    | `/api/roommates`          | Anyone    | List roommate profiles, 12 per page (`page`). Starting point for Yanli Wang's feature                                                                              |
 
 ## Instructions to Build
 
@@ -183,7 +184,7 @@ backend/
   server.js           App entry point: sessions, Passport, routes, built frontend
   auth/               Passport local strategy and password hashing
   db/                 MongoDB connection, indexes and queries
-  routes/             API routes (auth, sublets)
+  routes/             API routes (auth, sublets, roommates)
   middleware/         Login check and error handler
   utils/              Validation, search query and date helpers
   constants/          Neighborhoods and the demo account
