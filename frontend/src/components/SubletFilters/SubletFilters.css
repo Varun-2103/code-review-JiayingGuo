@@ -1,14 +1,14 @@
 .sublet-filters {
   display: grid;
-  gap: 24px;
-  padding: 24px;
+  gap: 16px;
+  padding: 20px;
   border-radius: var(--radius-lg);
   background: var(--color-surface);
 }
 
 .sublet-filters label {
   display: grid;
-  gap: 8px;
+  gap: 4px;
   font-size: 14px;
   line-height: 20px;
   font-weight: 600;
@@ -51,11 +51,11 @@
 .filters-chips {
   display: flex;
   flex-wrap: wrap;
-  gap: 8px;
+  gap: 4px;
 }
 
 .filters-chip {
-  padding: 4px 8px;
+  padding: 2px 8px;
   border: 1px solid var(--color-border);
   border-radius: var(--radius-md);
   background: var(--color-bg);
@@ -100,16 +100,16 @@
   }
 }
 
-/* Two boxes side by side when there is room. Date boxes need about 140px,
-   so in the narrow desktop sidebar they stack instead of overflowing. */
+/* Two boxes side by side (min and max rent, move in and move out). */
 .filters-row {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 140px), 1fr));
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 8px;
 }
 
-.filters-row:has(input[type="number"]) {
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+/* Date boxes need less side padding to fit two in the sidebar. */
+.sublet-filters input[type="date"] {
+  padding-inline: 8px;
 }
 
 .filters-row legend {
