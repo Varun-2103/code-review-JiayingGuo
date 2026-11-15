@@ -10,6 +10,7 @@ import SubletDetailPage from "./pages/SubletDetailPage/SubletDetailPage.jsx";
 import NewSubletPage from "./pages/NewSubletPage/NewSubletPage.jsx";
 import EditSubletPage from "./pages/EditSubletPage/EditSubletPage.jsx";
 import MyListingsPage from "./pages/MyListingsPage/MyListingsPage.jsx";
+import RoommatesPage from "./pages/RoommatesPage/RoommatesPage.jsx";
 import NotFoundPage from "./pages/NotFoundPage/NotFoundPage.jsx";
 import "./App.css";
 
@@ -52,6 +53,7 @@ function App() {
                 </ProtectedRoute>
               }
             />
+            <Route path="/roommates" element={<RoommatesPage />} />
             <Route path="*" element={<NotFoundPage />} />
           </Routes>
         </main>

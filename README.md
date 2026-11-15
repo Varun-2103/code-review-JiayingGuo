@@ -52,7 +52,7 @@ Posting a sublet:
 
 My listings, with one listing marked as rented:
 
-![My Listings](screenshots/5-my-listings.png)
+![My listings](screenshots/5-my-listings.png)
 
 On a phone:
 
@@ -190,7 +190,7 @@ backend/
   constants/          Neighborhoods and the demo account
   scripts/            Seed scripts for the synthetic data
 frontend/
-  public/             Favicon, sample room pictures, "no photo" picture
+  public/             Favicon, sample room photos, "no photo" picture
   src/App.jsx         Routes
   src/api/            Fetch helpers for the API
   src/context/        Login state (AuthProvider and useAuth)
@@ -205,7 +205,7 @@ Each React component is in its own folder and its own file. Components that need
 
 ## AI Disclosure
 
-We used Claude to help plan the project, review the code and write parts of the documentation.
+We used Claude to help plan the project, write and review code, redesign the interface and write parts of the documentation. The 20 sample room photos were made with an AI image generator.
 
 ## License
 

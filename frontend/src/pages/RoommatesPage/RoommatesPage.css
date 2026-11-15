@@ -1,0 +1,18 @@
+.roommates-page h1 {
+  margin: 0 0 24px;
+  font-size: 30px;
+  line-height: 36px;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+.roommates-empty {
+  padding: 40px;
+  border-radius: var(--radius-lg);
+  background: var(--color-surface);
+  color: var(--color-muted);
+}
+
+.roommates-empty p {
+  margin: 0;
+}

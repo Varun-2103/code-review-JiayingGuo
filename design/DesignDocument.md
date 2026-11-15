@@ -44,12 +44,12 @@ The app has two independent features: sublet listings and roommate profiles. The
 - Each sublet listing has a short title, so listings are easy to tell apart in the search results.
 - Sublet search results can be sorted by newest or by price, and are split into pages of 12.
 - When a listing is marked as rented, it is hidden from search and its detail page no longer shows the contact email, so people stop contacting the poster.
-- The photo link is optional. Listings without a photo, or with a broken link, show a "No photo" picture. The synthetic listings use eight sample room pictures that come with the app, so the demo does not depend on an outside photo website.
+- The photo link is optional. Listings without a photo, or with a broken link, show a "No photo" picture. The synthetic listings use 20 sample room photos that come with the app, so the demo does not depend on an outside photo website. The photos were made with an AI image generator and do not show real apartments.
 - Besides the libraries approved in the proposal (dotenv, @faker-js/faker and connect-mongo), the app uses passport-local and express-session, which are the standard way to use Passport with a username and password, and react-router-dom and prop-types, which the project requirements ask for.
 
 ## Design Mockups
 
-All pages share the same header: the SubletBoard logo, the links Find a Sublet and Post a Sublet, and Log in and Sign up. After logging in, the header also shows My Listings, the student's name and a Log out button. Blue numbers in the mockups point to notes under each picture.
+All pages share the same header: the SubletBoard logo, the links Find a sublet, Post a sublet and Find a roommate, and Log in and Sign up. After logging in, the header also shows My listings, the student's name and a Log out button. Blue numbers in the mockups point to notes under each picture.
 
 ### Jiaying Guo: sublet listings
 
@@ -85,11 +85,11 @@ One form is used to post a new listing and to edit one. It has the title, neighb
 
 ![Post or edit a sublet](mockups/listing-form.svg)
 
-#### My Listings (stories 2 and 4)
+#### My listings (stories 2 and 4)
 
-My Listings shows every listing the student posted, including rented ones, with a count at the top. Each card has buttons to mark it as rented or available, edit it, and delete it.
+My listings shows every listing the student posted, including rented ones, with a count at the top. Each card has buttons to mark it as rented or available, edit it, and delete it.
 
-![My Listings](mockups/my-listings.svg)
+![My listings](mockups/my-listings.svg)
 
 ## Data
 

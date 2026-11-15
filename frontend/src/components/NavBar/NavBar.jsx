@@ -33,6 +33,7 @@ function NavBar() {
             Find a sublet
           </NavLink>
           <NavLink to="/sublets/new">Post a sublet</NavLink>
+          <NavLink to="/roommates">Find a roommate</NavLink>
           {user && <NavLink to="/my-listings">My listings</NavLink>}
         </nav>
 
