@@ -3,10 +3,9 @@
   align-items: center;
   justify-content: center;
   gap: 16px;
-  margin-top: 32px;
-}
-
-.pagination .button:disabled {
-  cursor: not-allowed;
-  opacity: 0.5;
+  margin-top: 40px;
+  color: var(--color-muted);
+  font-size: 14px;
+  line-height: 20px;
+  font-variant-numeric: tabular-nums;
 }

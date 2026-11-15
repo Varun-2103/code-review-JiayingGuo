@@ -25,7 +25,7 @@ Many Northeastern students leave Boston for a co-op or a semester and need someo
 - Post a sublet with a title, neighborhood, monthly rent, start and end dates, furnished or not, commute time to campus, a photo link and a description. Edit or delete it later.
 - Search sublets by neighborhood (more than one at a time), price range, move-in and move-out dates, and furnished. Sort by newest or by price, 12 results per page. The search is kept in the address bar, so the back button, refresh and shared links all work.
 - Open a listing to see its details. Students who are logged in can see the poster's contact email.
-- See all your listings on the My Listings page, and mark a listing as rented. Rented listings are hidden from search and no longer show the email, so people stop writing.
+- See all your listings on the My listings page, and mark a listing as rented. Rented listings are hidden from search and no longer show the email, so people stop writing.
 
 ### Roommate profiles (Yanli Wang)
 
@@ -50,7 +50,7 @@ Posting a sublet:
 
 ![Post a sublet](screenshots/4-post-sublet.png)
 
-My Listings, with one listing marked as rented:
+My listings, with one listing marked as rented:
 
 ![My Listings](screenshots/5-my-listings.png)
 
@@ -70,15 +70,15 @@ You can browse and search without an account. To post a sublet or see a contact 
 - Email: `demo@subletboard.app`
 - Password: `demo1234`
 
-1. **Find a room:** open **Find a Sublet**, choose neighborhoods, a price range, your move-in and move-out dates and furnished, then click **Search**. Click a listing to see the details and the poster's email.
-2. **Post your room:** click **Post a Sublet**, fill in the form and click **Post listing**.
-3. **Manage your rooms:** open **My Listings** to edit or delete a listing, or click **Mark as rented** when someone takes the room.
+1. **Find a room:** open **Find a sublet**, choose neighborhoods, a price range, your move-in and move-out dates and furnished, then click **Search**. Click a listing to see the details and the poster's email.
+2. **Post your room:** click **Post a sublet**, fill in the form and click **Post listing**.
+3. **Manage your rooms:** open **My listings** to edit or delete a listing, or click **Mark as rented** when someone takes the room.
 
 The deployed app runs on Render's free plan. If it has not been used for a while, the first page can take about a minute to load.
 
 ## Tech Stack
 
-- Frontend: React (hooks), React Router, Fetch API, PropTypes, Vite
+- Frontend: React (hooks), React Router, Fetch API, PropTypes, Vite, Manrope font (Google Fonts)
 - Backend: Node.js, Express 5
 - Authentication: Passport (local strategy) with sessions saved in MongoDB (connect-mongo)
 - Database: MongoDB (native Node.js driver)
@@ -200,7 +200,7 @@ design/               Design document and mockups
 screenshots/          Pictures used in this README
 ```
 
-Each React component is in its own folder, together with its CSS file of the same name, which the component imports.
+Each React component is in its own folder and its own file. Components that need their own styles have a CSS file with the same name, which the component imports. `App.css` only holds the shared design tokens (colors, radius, motion), the button styles and the message styles.
 
 ## AI Disclosure
 

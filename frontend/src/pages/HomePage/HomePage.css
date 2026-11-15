@@ -1,66 +1,123 @@
 .home-hero {
-  padding: 40px 0 24px;
-  max-width: 720px;
+  padding: 64px 0 80px;
 }
 
+.home-eyebrow {
+  margin: 0 0 16px;
+  color: var(--color-accent-text);
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 600;
+}
+
+/* The one place a gradient is used: on the hero heading text. */
 .home-hero h1 {
-  margin-top: 0;
-  font-size: clamp(1.75rem, 4vw, 2.5rem);
-  line-height: 1.2;
+  max-width: 680px;
+  margin: 0;
+  font-size: 60px;
+  line-height: 60px;
+  font-weight: 600;
+  letter-spacing: -0.03em;
+  background: linear-gradient(90deg, var(--color-text), #6f685c);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
 }
 
-.home-hero p {
-  font-size: 1.125rem;
+.home-sub {
+  max-width: 680px;
+  margin: 24px 0 32px;
   color: var(--color-muted);
+  font-size: 18px;
+  line-height: 28px;
 }
 
 .home-actions {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  gap: 16px;
+  gap: 16px 24px;
+  margin: 0;
 }
 
-.home-actions .home-primary {
-  padding: 10px 20px;
-  border-radius: var(--radius);
-  background: var(--color-primary);
-  color: #ffffff;
-  text-decoration: none;
+.home-actions a:not(.button) {
+  color: var(--color-text);
   font-weight: 600;
 }
 
-.home-actions .home-primary:hover {
-  background: var(--color-primary-dark);
-}
-
-.home-guide {
-  margin-top: 16px;
-  padding: 24px;
-  background: var(--color-surface);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius);
-}
-
 .home-guide h2 {
-  margin-top: 0;
+  margin: 0 0 24px;
+  font-size: 30px;
+  line-height: 36px;
+  font-weight: 600;
+  letter-spacing: -0.02em;
 }
 
 .home-guide-columns {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 8px 32px;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr));
+  gap: 24px;
 }
 
-.home-guide h3 {
-  margin-bottom: 8px;
+.home-guide-card {
+  padding: 24px;
+  border-radius: var(--radius-lg);
+  background: var(--color-surface);
 }
 
-.home-guide ol {
+.home-guide-card h3 {
+  margin: 0 0 16px;
+  font-size: 20px;
+  line-height: 28px;
+  font-weight: 600;
+}
+
+.home-guide-card ol {
+  display: grid;
+  gap: 12px;
   margin: 0;
-  padding-left: 20px;
+  padding: 0;
+  list-style: none;
+  counter-reset: step;
 }
 
-.home-guide li {
-  margin-bottom: 6px;
+.home-guide-card li {
+  position: relative;
+  min-height: 24px;
+  padding-left: 36px;
+  color: var(--color-muted);
+  counter-increment: step;
+}
+
+/* The step number in a small square on the left. */
+.home-guide-card li::before {
+  content: counter(step);
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: grid;
+  place-items: center;
+  width: 24px;
+  height: 24px;
+  border-radius: var(--radius-sm);
+  background: var(--color-accent-soft);
+  color: var(--color-accent-text);
+  font-size: 12px;
+  line-height: 16px;
+  font-weight: 600;
+}
+
+.home-guide-card li strong {
+  color: var(--color-text);
+}
+
+@media (max-width: 640px) {
+  .home-hero {
+    padding: 32px 0 48px;
+  }
+
+  .home-hero h1 {
+    font-size: 36px;
+    line-height: 40px;
+  }
 }

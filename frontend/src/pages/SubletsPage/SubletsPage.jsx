@@ -3,12 +3,16 @@ import { Link, useSearchParams } from "react-router-dom";
 import { searchSublets } from "../../api/subletsApi.js";
 import SubletFilters from "../../components/SubletFilters/SubletFilters.jsx";
 import SubletCard from "../../components/SubletCard/SubletCard.jsx";
+import SubletCardSkeleton from "../../components/SubletCardSkeleton/SubletCardSkeleton.jsx";
 import Pagination from "../../components/Pagination/Pagination.jsx";
 import {
   filtersFromParams,
   paramsFromFilters,
 } from "../../utils/subletFilters.js";
 import "./SubletsPage.css";
+
+// Six placeholder cards while the first search loads.
+const SKELETON_KEYS = [1, 2, 3, 4, 5, 6];
 
 function SubletsPage() {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -50,7 +54,7 @@ function SubletsPage() {
     <div className="sublets-page">
       <header className="sublets-header">
         <h1>Find a sublet</h1>
-        <Link to="/sublets/new" className="button">
+        <Link to="/sublets/new" className="button button-secondary">
           Post a sublet
         </Link>
       </header>
@@ -77,7 +81,16 @@ function SubletsPage() {
             </p>
           )}
 
-          {loading && !data && <p className="status-message">Loading...</p>}
+          {loading && !data && (
+            <>
+              <p className="sublets-count">Searching...</p>
+              <div className="sublets-grid">
+                {SKELETON_KEYS.map((n) => (
+                  <SubletCardSkeleton key={n} />
+                ))}
+              </div>
+            </>
+          )}
 
           {data && (
             <>

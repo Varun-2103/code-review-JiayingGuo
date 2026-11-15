@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import SubletCard from "../../components/SubletCard/SubletCard.jsx";
+import SubletCardSkeleton from "../../components/SubletCardSkeleton/SubletCardSkeleton.jsx";
 import {
   deleteSublet,
   getMySublets,
@@ -75,10 +76,10 @@ function MyListingsPage() {
   const rentedCount = items.filter((s) => s.status === "rented").length;
 
   return (
-    <section>
+    <section className="my-listings-page">
       <header className="my-listings-header">
         <div>
-          <h1>My Listings</h1>
+          <h1>My listings</h1>
           {loaded && !error && (
             <p className="status-message">
               {items.length} {items.length === 1 ? "listing" : "listings"},{" "}
@@ -91,7 +92,13 @@ function MyListingsPage() {
         </Link>
       </header>
 
-      {!loaded && <p className="status-message">Loading...</p>}
+      {!loaded && (
+        <div className="my-listings-grid">
+          <SubletCardSkeleton />
+          <SubletCardSkeleton />
+          <SubletCardSkeleton />
+        </div>
+      )}
       {error && (
         <p className="error-message" role="alert">
           {error.message}
@@ -105,8 +112,14 @@ function MyListingsPage() {
 
       {loaded && !error && items.length === 0 && (
         <div className="my-listings-empty">
-          <p>You have not posted any sublets yet.</p>
-          <Link to="/sublets/new">Post your first sublet</Link>
+          <h2>You have not posted any sublets yet</h2>
+          <p>
+            Leaving Boston for a while? Post your room so another student can
+            take it while you are away.
+          </p>
+          <Link to="/sublets/new" className="button">
+            Post your first sublet
+          </Link>
         </div>
       )}
 

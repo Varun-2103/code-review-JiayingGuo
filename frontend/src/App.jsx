@@ -17,8 +17,11 @@ function App() {
   return (
     <BrowserRouter>
       <AuthProvider>
+        <a className="skip-link" href="#main">
+          Skip to content
+        </a>
         <NavBar />
-        <main className="app-main">
+        <main id="main" className="app-main">
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/login" element={<LoginPage />} />

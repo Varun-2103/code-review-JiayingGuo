@@ -42,7 +42,7 @@ function SignupPage() {
     >
       <form onSubmit={handleSubmit}>
         {error && (
-          <p className="form-error" role="alert">
+          <p className="error-message" role="alert">
             {error}
           </p>
         )}
@@ -86,7 +86,7 @@ function SignupPage() {
             onChange={(e) => setPassword(e.target.value)}
           />
         </label>
-        <button type="submit" disabled={submitting}>
+        <button type="submit" className="button" disabled={submitting}>
           {submitting ? "Creating account..." : "Sign up"}
         </button>
       </form>

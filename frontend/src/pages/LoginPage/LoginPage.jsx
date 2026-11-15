@@ -43,7 +43,7 @@ function LoginPage() {
     >
       <form onSubmit={handleSubmit}>
         {error && (
-          <p className="form-error" role="alert">
+          <p className="error-message" role="alert">
             {error}
           </p>
         )}
@@ -69,7 +69,7 @@ function LoginPage() {
             onChange={(e) => setPassword(e.target.value)}
           />
         </label>
-        <button type="submit" disabled={submitting}>
+        <button type="submit" className="button" disabled={submitting}>
           {submitting ? "Logging in..." : "Log in"}
         </button>
       </form>

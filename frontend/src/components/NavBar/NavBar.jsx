@@ -30,10 +30,10 @@ function NavBar() {
 
         <nav className="navbar-links" aria-label="Main">
           <NavLink to="/sublets" end>
-            Find a Sublet
+            Find a sublet
           </NavLink>
-          <NavLink to="/sublets/new">Post a Sublet</NavLink>
-          {user && <NavLink to="/my-listings">My Listings</NavLink>}
+          <NavLink to="/sublets/new">Post a sublet</NavLink>
+          {user && <NavLink to="/my-listings">My listings</NavLink>}
         </nav>
 
         <div className="navbar-account">
@@ -42,7 +42,7 @@ function NavBar() {
               <span className="navbar-user">Hi, {user.name}</span>
               <button
                 type="button"
-                className="navbar-logout"
+                className="button button-secondary button-sm"
                 onClick={handleLogout}
                 disabled={loggingOut}
               >
@@ -51,8 +51,10 @@ function NavBar() {
             </>
           ) : (
             <>
-              <NavLink to="/login">Log in</NavLink>
-              <NavLink to="/signup" className="navbar-signup">
+              <NavLink to="/login" className="navbar-login">
+                Log in
+              </NavLink>
+              <NavLink to="/signup" className="button button-sm">
                 Sign up
               </NavLink>
             </>

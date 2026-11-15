@@ -70,7 +70,7 @@ function SubletDetailPage() {
   if (result.error) {
     const notFound = result.error.status === 404;
     return (
-      <section>
+      <section className="sublet-detail-error">
         <h1>{notFound ? "Listing not found" : "Something went wrong"}</h1>
         <p className="error-message">
           {notFound

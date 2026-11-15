@@ -3,36 +3,50 @@
   flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
-  gap: 12px;
-  margin-bottom: 16px;
+  gap: 16px;
+  margin-bottom: 24px;
 }
 
 .sublets-header h1 {
   margin: 0;
+  font-size: 30px;
+  line-height: 36px;
+  font-weight: 600;
+  letter-spacing: -0.02em;
 }
 
 .sublets-layout {
   display: grid;
   grid-template-columns: 280px minmax(0, 1fr);
-  gap: 24px;
+  gap: 32px;
   align-items: start;
 }
 
+/* Stays in view below the floating nav bar. On a short screen the filters
+   scroll on their own so the Search button can always be reached. */
 .sublets-sidebar {
   position: sticky;
-  top: 16px;
+  top: 96px;
+  max-height: calc(100dvh - 112px);
+  overflow-y: auto;
+  border-radius: var(--radius-lg);
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-hover) transparent;
 }
 
 .sublets-count {
-  margin-top: 0;
+  margin: 0 0 16px;
   color: var(--color-muted);
+  font-size: 14px;
+  line-height: 20px;
+  font-variant-numeric: tabular-nums;
 }
 
 .sublets-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-  gap: 16px;
-  transition: opacity 0.15s;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 220px), 1fr));
+  gap: 24px;
+  transition: opacity 300ms var(--ease);
 }
 
 .sublets-grid.is-loading {
@@ -41,10 +55,13 @@
 
 @media (max-width: 760px) {
   .sublets-layout {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 24px;
   }
 
   .sublets-sidebar {
     position: static;
+    max-height: none;
+    overflow-y: visible;
   }
 }

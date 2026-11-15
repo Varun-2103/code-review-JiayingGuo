@@ -7,7 +7,7 @@ import { subletShape } from "../../utils/subletShape.js";
 import "./SubletCard.css";
 
 // One listing in a grid. `children` adds buttons under the card
-// (used on the My Listings page).
+// (used on the My listings page).
 function SubletCard({ sublet, children }) {
   return (
     <article className="sublet-card">

@@ -19,9 +19,6 @@ function checkFilters(f) {
 function SubletFilters({ initialValues, onApply }) {
   const [values, setValues] = useState(initialValues);
   const [error, setError] = useState("");
-  // Only decides whether the neighborhood list starts open. After that the
-  // user opens and closes it.
-  const [neighborhoodsOpen] = useState(initialValues.neighborhoods.length > 0);
 
   const setField = (field, value) =>
     setValues((v) => ({ ...v, [field]: value }));
@@ -79,24 +76,28 @@ function SubletFilters({ initialValues, onApply }) {
         </select>
       </label>
 
-      <details className="filters-neighborhoods" open={neighborhoodsOpen}>
-        <summary>
-          Neighborhoods{selectedCount > 0 && ` (${selectedCount} selected)`}
-        </summary>
-        <fieldset>
-          <legend className="visually-hidden">Neighborhoods</legend>
+      {/* Toggle buttons: pick as many neighborhoods as you like. */}
+      <fieldset className="filters-neighborhoods">
+        <legend>
+          Neighborhoods
+          {selectedCount > 0 && (
+            <span className="filters-selected"> {selectedCount} selected</span>
+          )}
+        </legend>
+        <div className="filters-chips">
           {NEIGHBORHOODS.map((name) => (
-            <label key={name} className="filters-check">
-              <input
-                type="checkbox"
-                checked={values.neighborhoods.includes(name)}
-                onChange={() => toggleNeighborhood(name)}
-              />
+            <button
+              key={name}
+              type="button"
+              className="filters-chip"
+              aria-pressed={values.neighborhoods.includes(name)}
+              onClick={() => toggleNeighborhood(name)}
+            >
               {name}
-            </label>
+            </button>
           ))}
-        </fieldset>
-      </details>
+        </div>
+      </fieldset>
 
       <fieldset className="filters-row">
         <legend>Monthly rent ($)</legend>

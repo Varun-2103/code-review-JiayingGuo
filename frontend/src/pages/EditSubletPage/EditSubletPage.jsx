@@ -3,6 +3,7 @@ import { Link, useNavigate, useParams } from "react-router-dom";
 import SubletForm from "../../components/SubletForm/SubletForm.jsx";
 import { getSublet, updateSublet } from "../../api/subletsApi.js";
 import { toDateInputValue } from "../../utils/format.js";
+import "./EditSubletPage.css";
 
 // The form keeps text in its inputs, so numbers become strings here.
 function toFormValues(sublet) {
@@ -47,14 +48,14 @@ function EditSubletPage() {
 
   if (result.error) {
     return (
-      <section className="narrow-page">
+      <section className="edit-sublet-page">
         <h1>
           {result.error.status === 404
             ? "Listing not found"
             : "Something went wrong"}
         </h1>
         <p className="error-message">{result.error.message}</p>
-        <Link to="/my-listings">Back to My Listings</Link>
+        <Link to="/my-listings">Back to My listings</Link>
       </section>
     );
   }
@@ -62,7 +63,7 @@ function EditSubletPage() {
   const sublet = result.data;
   if (!sublet.isOwner) {
     return (
-      <section className="narrow-page">
+      <section className="edit-sublet-page">
         <h1>You cannot edit this listing</h1>
         <p className="error-message">
           Only the student who posted it can edit it.
@@ -73,7 +74,7 @@ function EditSubletPage() {
   }
 
   return (
-    <section className="narrow-page">
+    <section className="edit-sublet-page">
       <h1>Edit listing</h1>
       {/* key: a different listing starts a fresh form */}
       <SubletForm

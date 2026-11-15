@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import SubletForm from "../../components/SubletForm/SubletForm.jsx";
 import { createSublet } from "../../api/subletsApi.js";
+import "./NewSubletPage.css";
 
 function NewSubletPage() {
   const navigate = useNavigate();
@@ -11,7 +12,7 @@ function NewSubletPage() {
   }
 
   return (
-    <section className="narrow-page">
+    <section className="new-sublet-page">
       <h1>Post a sublet</h1>
       <p className="status-message">
         Students who are logged in will see your name and email on the listing.
