@@ -54,6 +54,22 @@ My listings, with one listing marked as rented:
 
 ![My listings](screenshots/5-my-listings.png)
 
+Find a roommate, filtered to night owls in Fenway or Mission Hill with a budget up to $1,600:
+
+![Find a roommate](screenshots/7-roommate-search.png)
+
+A roommate profile, logged in:
+
+![Roommate profile](screenshots/8-roommate-detail.png)
+
+Editing my roommate profile:
+
+![Roommate profile form](screenshots/9-roommate-form.png)
+
+My profile, hidden from search:
+
+![My profile](screenshots/10-my-profile.png)
+
 On a phone:
 
 ![Phone](screenshots/6-mobile.png)
@@ -65,7 +81,7 @@ On a phone:
 
 ## How to Use
 
-You can browse and search without an account. To post a sublet or see a contact email, sign up or use the demo account:
+You can browse and search without an account. To post a sublet, create a roommate profile or see a contact email, sign up or use the demo account:
 
 - Email: `demo@subletboard.app`
 - Password: `demo1234`
@@ -73,6 +89,9 @@ You can browse and search without an account. To post a sublet or see a contact 
 1. **Find a room:** open **Find a sublet**, choose neighborhoods, a price range, your move-in and move-out dates and furnished, then click **Search**. Click a listing to see the details and the poster's email.
 2. **Post your room:** click **Post a sublet**, fill in the form and click **Post listing**.
 3. **Manage your rooms:** open **My listings** to edit or delete a listing, or click **Mark as rented** when someone takes the room.
+4. **Find a roommate:** open **Find a roommate**, choose neighborhoods, a budget range, move-in dates, sleep schedule, pets and smoking. Click a profile to see the details and the student's email.
+5. **Create your profile:** on **Find a roommate**, click **Create my profile**, fill in your budget, neighborhoods, move-in date, lifestyle and a short bio, and click **Create profile**. Each student has one profile. If you already have one, the button opens it for editing.
+6. **Hide or show your profile:** open **My profile** to edit or delete it. Click **Hide from search** after you find a roommate, so nobody else can find or open it, and **Show in search** when you are looking again.
 
 The deployed app runs on Render's free plan. If it has not been used for a while, the first page can take about a minute to load.
 
