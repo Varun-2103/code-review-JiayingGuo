@@ -12,6 +12,8 @@ import EditSubletPage from "./pages/EditSubletPage/EditSubletPage.jsx";
 import MyListingsPage from "./pages/MyListingsPage/MyListingsPage.jsx";
 import RoommatesPage from "./pages/RoommatesPage/RoommatesPage.jsx";
 import RoommateDetailPage from "./pages/RoommateDetailPage/RoommateDetailPage.jsx";
+import NewRoommatePage from "./pages/NewRoommatePage/NewRoommatePage.jsx";
+import EditRoommatePage from "./pages/EditRoommatePage/EditRoommatePage.jsx";
 import NotFoundPage from "./pages/NotFoundPage/NotFoundPage.jsx";
 import "./App.css";
 
@@ -55,7 +57,23 @@ function App() {
               }
             />
             <Route path="/roommates" element={<RoommatesPage />} />
+            <Route
+              path="/roommates/new"
+              element={
+                <ProtectedRoute>
+                  <NewRoommatePage />
+                </ProtectedRoute>
+              }
+            />
             <Route path="/roommates/:id" element={<RoommateDetailPage />} />
+            <Route
+              path="/roommates/:id/edit"
+              element={
+                <ProtectedRoute>
+                  <EditRoommatePage />
+                </ProtectedRoute>
+              }
+            />
             <Route path="*" element={<NotFoundPage />} />
           </Routes>
         </main>

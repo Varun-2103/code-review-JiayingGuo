@@ -1,0 +1,18 @@
+.new-roommate-page {
+  display: grid;
+  gap: 16px;
+  max-width: 760px;
+  margin: 0 auto;
+}
+
+.new-roommate-page h1 {
+  margin: 0;
+  font-size: 30px;
+  line-height: 36px;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+.new-roommate-page > p {
+  margin: 0 0 8px;
+}

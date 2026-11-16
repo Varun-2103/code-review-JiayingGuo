@@ -52,7 +52,6 @@ function RoommatesPage() {
     <div className="roommates-page">
       <header className="roommates-header">
         <h1>Find a roommate</h1>
-        {/* The profile form comes in a later feature. */}
         <Link to="/roommates/new" className="button button-secondary">
           Create my profile
         </Link>
