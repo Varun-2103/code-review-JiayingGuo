@@ -14,6 +14,7 @@ import RoommatesPage from "./pages/RoommatesPage/RoommatesPage.jsx";
 import RoommateDetailPage from "./pages/RoommateDetailPage/RoommateDetailPage.jsx";
 import NewRoommatePage from "./pages/NewRoommatePage/NewRoommatePage.jsx";
 import EditRoommatePage from "./pages/EditRoommatePage/EditRoommatePage.jsx";
+import MyProfilePage from "./pages/MyProfilePage/MyProfilePage.jsx";
 import NotFoundPage from "./pages/NotFoundPage/NotFoundPage.jsx";
 import "./App.css";
 
@@ -71,6 +72,14 @@ function App() {
               element={
                 <ProtectedRoute>
                   <EditRoommatePage />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/my-profile"
+              element={
+                <ProtectedRoute>
+                  <MyProfilePage />
                 </ProtectedRoute>
               }
             />

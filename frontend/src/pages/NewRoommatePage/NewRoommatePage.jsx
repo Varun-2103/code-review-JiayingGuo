@@ -1,16 +1,39 @@
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import RoommateForm from "../../components/RoommateForm/RoommateForm.jsx";
-import { createRoommate } from "../../api/roommatesApi.js";
+import { createRoommate, getMyRoommate } from "../../api/roommatesApi.js";
 import "./NewRoommatePage.css";
 
 function NewRoommatePage() {
   const navigate = useNavigate();
+  const [checked, setChecked] = useState(false);
 
-  // A student who already has a profile gets a 409 message from the server.
+  // Each student has one profile. If they already have it, open its edit
+  // page instead of a form the server would refuse with 409.
+  useEffect(() => {
+    let ignore = false;
+    getMyRoommate()
+      .then((mine) => {
+        if (ignore) return;
+        if (mine) navigate(`/roommates/${mine._id}/edit`, { replace: true });
+        else setChecked(true);
+      })
+      .catch(() => {
+        // Show the form anyway. The server still checks on submit.
+        if (!ignore) setChecked(true);
+      });
+    return () => {
+      ignore = true;
+    };
+  }, [navigate]);
+
+  // A profile made in another tab still gets a 409 message from the server.
   async function handleSubmit(values) {
     const created = await createRoommate(values);
     navigate(`/roommates/${created._id}`);
   }
+
+  if (!checked) return <p className="status-message">Loading...</p>;
 
   return (
     <section className="new-roommate-page">

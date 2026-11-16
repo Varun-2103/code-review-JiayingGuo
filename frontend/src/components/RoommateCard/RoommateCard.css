@@ -111,3 +111,19 @@
   line-clamp: 2;
   overflow: hidden;
 }
+
+/* Buttons sit above the card-wide link so they stay clickable.
+   The first button takes the full row, the others share the next row. */
+.roommate-card-actions {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  margin-top: auto;
+  padding-top: 8px;
+}
+
+.roommate-card-actions > :first-child {
+  grid-column: 1 / -1;
+}
