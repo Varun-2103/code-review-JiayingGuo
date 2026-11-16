@@ -45,11 +45,14 @@ The app has two independent features: sublet listings and roommate profiles. The
 - Sublet search results can be sorted by newest or by price, and are split into pages of 12.
 - When a listing is marked as rented, it is hidden from search and its detail page no longer shows the contact email, so people stop contacting the poster.
 - The photo link is optional. Listings without a photo, or with a broken link, show a "No photo" picture. The synthetic listings use 20 sample room photos that come with the app, so the demo does not depend on an outside photo website. The photos were made with an AI image generator and do not show real apartments.
+- Each student can have one roommate profile. A profile lists up to 3 preferred neighborhoods.
+- Roommate search results can be sorted by newest, by budget or by move-in date, and are split into pages of 12.
+- When a profile is hidden, it is left out of search and only its author can open it, so nobody can contact the student until they show it again.
 - Besides the libraries approved in the proposal (dotenv, @faker-js/faker and connect-mongo), the app uses passport-local and express-session, which are the standard way to use Passport with a username and password, and react-router-dom and prop-types, which the project requirements ask for.
 
 ## Design Mockups
 
-All pages share the same header: the SubletBoard logo, the links Find a sublet, Post a sublet and Find a roommate, and Log in and Sign up. After logging in, the header also shows My listings, the student's name and a Log out button. Blue numbers in the mockups point to notes under each picture.
+All pages share the same header: the SubletBoard logo, the links Find a sublet, Post a sublet and Find a roommate, and Log in and Sign up. After logging in, the header also shows My listings, My profile, the student's name and a Log out button. Blue numbers in the mockups point to notes under each picture.
 
 ### Jiaying Guo: sublet listings
 
@@ -91,6 +94,34 @@ My listings shows every listing the student posted, including rented ones, with 
 
 ![My listings](mockups/my-listings.svg)
 
+### Yanli Wang: roommate profiles
+
+#### Find a roommate (story 6)
+
+The filters are on the left: neighborhoods (more than one can be chosen), minimum and maximum monthly budget, a range of move-in dates, sleep schedule (early bird, night owl or flexible), pets (has pets, fine with pets, or no pets please) and smoking (non-smokers only or smokers only). The sort menu changes the order right away (newest, budget low to high, budget high to low, move-in date soonest). Each card shows the student's name and initials, move-in date, budget, preferred neighborhoods, sleep schedule, pets, smoking and the start of the bio. Results come 12 per page. Like the sublet search, the search is saved in the address bar, so the back button and refresh keep it.
+
+A profile matches a neighborhood filter if any of its preferred neighborhoods is chosen. Hidden profiles never show up in search. The Create my profile button goes to the form, or to My profile if the student already has one.
+
+![Find a roommate](mockups/roommate-search.svg)
+
+#### Profile details (stories 6 and 7)
+
+The detail page shows the student's budget, preferred neighborhoods, move-in date, sleep schedule, pets, smoking and the full bio. The contact box shows the student's name. The email is only shown to students who are logged in. The author of the profile also sees buttons to edit it, hide it from search (or show it again) and delete it. A hidden profile can only be opened by its author. Everyone else sees "Profile not found".
+
+![Profile details](mockups/roommate-detail.svg)
+
+#### Create or edit a profile (story 5)
+
+One form is used to create a profile and to edit it. It has the monthly budget, move-in date, preferred neighborhoods (1 to 3), sleep schedule, pets, smoking and a short bio (up to 500 characters). Mistakes are explained in a message above the form before anything is saved. Each student can only have one profile, so a student who already has one is sent to edit it instead.
+
+![Create or edit a profile](mockups/roommate-form.svg)
+
+#### My profile (stories 5 and 7)
+
+My profile shows the student's own profile and whether it is shown in search or hidden. It has buttons to hide it from search (or show it again), open it, edit it and delete it. Hiding keeps everything saved, so a student like Marcus can hide his profile after he finds a roommate and show it again next year without filling in the form again. A student without a profile sees a message and a button to create one.
+
+![My profile](mockups/my-profile.svg)
+
 ## Data
 
 We use MongoDB with four collections. `sublets` and `roommates` are the two collections with full create, read, update and delete. `users` and `sessions` only support login.
@@ -98,13 +129,15 @@ We use MongoDB with four collections. `sublets` and `roommates` are the two coll
 | Collection  | Owner                    | Where the data comes from                   | Main fields                                                                                                                                                   |
 | ----------- | ------------------------ | ------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `sublets`   | Jiaying Guo              | 1,200 synthetic listings (Faker), and users | title, neighborhood, rent, startDate, endDate, furnished, commuteMinutes, photoUrl, description, status, authorId, authorName, authorEmail, seeded, createdAt |
-| `roommates` | Yanli Wang               | Synthetic profiles (Faker), and users       | Added by Yanli Wang                                                                                                                                           |
+| `roommates` | Yanli Wang               | 1,200 synthetic profiles (Faker), and users | budget, neighborhoods, moveInDate, sleepSchedule, pets, smoking, bio, hidden, authorId, authorName, authorEmail, seeded, createdAt                            |
 | `users`     | Jiaying Guo              | Synthetic users (Faker), and sign ups       | name, email, passwordHash, salt, seeded, createdAt                                                                                                            |
 | `sessions`  | Created by connect-mongo | Login sessions                              | session data and expiry date                                                                                                                                  |
 
 The synthetic data is generated with a fixed Faker seed, so running the seed scripts again gives the same records. The seed scripts only replace records marked `seeded: true`, so accounts and listings created by real users are kept.
 
 The sublet seed creates 101 students (one is the demo account) and 1,200 listings across 16 Boston neighborhoods. Rents depend on the neighborhood (from $900 to about $2,500 a month), most listings start around the beginning of a semester or co-op (January, May or September) and last 2 to 8 months, about two thirds are furnished, and about 15% are already rented.
+
+The roommate seed creates 1,200 profiles, one for each synthetic student, with its own Faker name and email. Budgets depend on the preferred neighborhoods (from about $800 to $2,200 a month), each profile has 1 to 3 neighborhoods, and most move-in dates are around the start of a semester or co-op (January, May or September). `sleepSchedule` is `early`, `late` or `flexible`, `pets` is `has`, `ok` or `no` (has pets, fine with pets, or no pets please), and `smoking` is true or false. About 10% of the profiles are hidden. The demo account also gets one profile, so My profile can be shown in the demo.
 
 ## Tech Stack
 
