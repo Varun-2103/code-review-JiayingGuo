@@ -114,6 +114,28 @@ All responses are JSON. Errors look like `{ "error": "message" }`.
 | DELETE | `/api/sublets/:id`        | Author    | Delete a listing                                                                                                                                                                                                                                    |
 | GET    | `/api/roommates`          | Anyone    | Search: `neighborhood` (repeat for more), `minBudget`, `maxBudget`, `moveInFrom`, `moveInTo`, `sleep`, `pets`, `smoking` (`yes`, `no`), `sort` (`newest`, `budget_asc`, `budget_desc`, `movein_asc`), `page`, `limit`. Hidden profiles are left out |
 | GET    | `/api/roommates/:id`      | Anyone    | One profile. The email is included for logged-in users. A hidden profile returns 404 unless you are its author                                                                                                                                      |
+| POST   | `/api/roommates`          | Logged in | Create your profile. Returns 409 if you already have one                                                                                                                                                                                            |
+| PUT    | `/api/roommates/:id`      | Author    | Edit your profile                                                                                                                                                                                                                                   |
+| DELETE | `/api/roommates/:id`      | Author    | Delete your profile                                                                                                                                                                                                                                 |
+
+### Roommate profile rules
+
+- Each student can have one profile. A second `POST /api/roommates` returns `409`.
+- `PUT` and `DELETE` check that the profile exists first (`404`), then that you are its author (`403`). Not logged in returns `401`.
+- `POST` and `PUT` take the same body. Only these fields are read, so a request cannot set `hidden`, the author fields or `seeded`:
+
+| Field           | Rule                                                                 |
+| --------------- | -------------------------------------------------------------------- |
+| `budget`        | Monthly budget in dollars, a whole number from 1 to 10000            |
+| `neighborhoods` | 1 to 3 different neighborhoods from the list                         |
+| `moveInDate`    | A date, `YYYY-MM-DD`                                                 |
+| `sleepSchedule` | `early`, `late` or `flexible`                                        |
+| `pets`          | `has` (I have a pet), `ok` (fine with pets) or `no` (no pets please) |
+| `smoking`       | `true` or `false`                                                    |
+| `bio`           | Required, at most 500 characters                                     |
+
+- A new profile is shown in search (`hidden: false`). Editing does not change whether it is hidden.
+- Mistakes return `400` with a message, and nothing is saved.
 
 ## Instructions to Build
 

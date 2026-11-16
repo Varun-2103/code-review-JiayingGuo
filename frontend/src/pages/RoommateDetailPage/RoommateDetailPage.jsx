@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
-import { Link, useLocation, useParams } from "react-router-dom";
+import { Link, useLocation, useNavigate, useParams } from "react-router-dom";
 import useAuth from "../../context/useAuth.js";
-import { getRoommate } from "../../api/roommatesApi.js";
+import { deleteRoommate, getRoommate } from "../../api/roommatesApi.js";
 import { formatDate, formatRent } from "../../utils/format.js";
 import {
   PETS_LABELS,
@@ -22,7 +22,10 @@ function RoommateDetailPage() {
   const { id } = useParams();
   const { user } = useAuth();
   const location = useLocation();
+  const navigate = useNavigate();
   const [result, setResult] = useState({ key: null, data: null, error: null });
+  const [busy, setBusy] = useState(false);
+  const [actionError, setActionError] = useState("");
 
   // Load again when the user logs in or out: the email depends on it.
   const key = `${id}:${user?._id ?? ""}`;
@@ -40,6 +43,19 @@ function RoommateDetailPage() {
       ignore = true;
     };
   }, [id, key]);
+
+  async function handleDelete() {
+    if (!window.confirm("Delete your profile? This cannot be undone.")) return;
+    setBusy(true);
+    setActionError("");
+    try {
+      await deleteRoommate(result.data._id);
+      navigate("/roommates");
+    } catch (err) {
+      setActionError(err.message);
+      setBusy(false);
+    }
+  }
 
   if (result.key !== key) return <p className="status-message">Loading...</p>;
 
@@ -138,6 +154,24 @@ function RoommateDetailPage() {
                   ? "Hidden from search. Only you can open this page."
                   : "Shown in search. Other students can find you."}
               </p>
+              {actionError && (
+                <p className="error-message" role="alert">
+                  {actionError}
+                </p>
+              )}
+              <div className="roommate-detail-actions">
+                <Link to={`/roommates/${profile._id}/edit`} className="button">
+                  Edit
+                </Link>
+                <button
+                  type="button"
+                  className="button button-danger"
+                  onClick={handleDelete}
+                  disabled={busy}
+                >
+                  Delete
+                </button>
+              </div>
             </section>
           )}
         </aside>
