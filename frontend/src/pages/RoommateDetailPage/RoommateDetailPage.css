@@ -1,0 +1,194 @@
+/* Same look as the sublet detail page. */
+.roommate-detail-back {
+  margin: 0 0 24px;
+  font-size: 14px;
+  line-height: 20px;
+}
+
+.roommate-detail-back a {
+  color: var(--color-muted);
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.roommate-detail-back a:hover {
+  color: var(--color-text);
+}
+
+.roommate-detail-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+  gap: 32px;
+  align-items: start;
+}
+
+.roommate-detail-info {
+  display: grid;
+  gap: 20px;
+  padding: 24px;
+  border-radius: var(--radius-lg);
+  background: var(--color-surface);
+}
+
+.roommate-detail-head {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.roommate-detail-avatar {
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  width: 88px;
+  height: 88px;
+  border-radius: 50%;
+  background: var(--color-accent-soft);
+  color: var(--color-accent-text);
+  font-size: 32px;
+  font-weight: 600;
+}
+
+.roommate-detail-head h1 {
+  margin: 0;
+  font-size: 30px;
+  line-height: 36px;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+.roommate-detail-budget {
+  margin: 4px 0 0;
+  color: var(--color-muted);
+  font-size: 14px;
+  line-height: 20px;
+}
+
+.roommate-detail-budget strong {
+  color: var(--color-text);
+  font-size: 24px;
+  line-height: 32px;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Same look as a card tag */
+.roommate-detail-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.roommate-detail-tags li {
+  padding: 2px 8px;
+  border-radius: var(--radius-sm);
+  background: var(--color-surface-2);
+  color: var(--color-muted);
+  font-size: 12px;
+  line-height: 16px;
+  font-weight: 600;
+}
+
+.roommate-detail-facts {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin: 0;
+}
+
+.roommate-detail-facts dt {
+  color: var(--color-muted);
+  font-size: 12px;
+  line-height: 16px;
+  font-weight: 500;
+}
+
+.roommate-detail-facts dd {
+  margin: 0;
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 600;
+}
+
+.roommate-detail-side {
+  display: grid;
+  gap: 16px;
+}
+
+.roommate-detail-box {
+  display: grid;
+  gap: 8px;
+  padding: 16px;
+  border-radius: var(--radius-md);
+  background: var(--color-surface-2);
+}
+
+.roommate-detail-box h2 {
+  margin: 0;
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 600;
+}
+
+.roommate-detail-box p {
+  margin: 0;
+  font-size: 14px;
+  line-height: 20px;
+  overflow-wrap: anywhere;
+}
+
+.roommate-detail-box a {
+  font-weight: 600;
+}
+
+.roommate-detail-bio {
+  max-width: 680px;
+  margin-top: 48px;
+}
+
+.roommate-detail-bio h2 {
+  margin: 0 0 12px;
+  font-size: 20px;
+  line-height: 28px;
+  font-weight: 600;
+}
+
+.roommate-detail-bio p {
+  margin: 0;
+  color: var(--color-muted);
+  white-space: pre-line;
+}
+
+.roommate-detail-error {
+  display: grid;
+  gap: 16px;
+  justify-items: start;
+  max-width: 680px;
+}
+
+.roommate-detail-error h1 {
+  margin: 0;
+  font-size: 30px;
+  line-height: 36px;
+  font-weight: 600;
+}
+
+@media (max-width: 760px) {
+  .roommate-detail-layout {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .roommate-detail-info {
+    padding: 16px;
+  }
+
+  .roommate-detail-avatar {
+    width: 64px;
+    height: 64px;
+    font-size: 24px;
+  }
+}
