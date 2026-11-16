@@ -11,9 +11,10 @@
     "lint": "eslint .",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
-    "seed": "npm run seed:users && npm run seed:sublets",
+    "seed": "npm run seed:users && npm run seed:sublets && npm run seed:roommates",
     "seed:users": "node scripts/seedUsers.js",
     "seed:sublets": "node scripts/seedSublets.js",
+    "seed:roommates": "node scripts/seedRoommates.js",
     "seed:demo": "node scripts/seedDemo.js"
   },
   "author": "Jiaying Guo, Yanli Wang",

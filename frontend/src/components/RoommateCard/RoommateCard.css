@@ -1,0 +1,113 @@
+/* Same look as the sublet cards: set apart by its background only. */
+.roommate-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 20px;
+  border-radius: var(--radius-lg);
+  background: var(--color-surface);
+  transition: transform 500ms var(--ease);
+}
+
+.roommate-card:hover {
+  transform: translateY(-2px);
+}
+
+.roommate-card-head {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 4px;
+}
+
+.roommate-avatar {
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--color-accent-soft);
+  color: var(--color-accent-text);
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.roommate-card-name {
+  margin: 0;
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 600;
+}
+
+.roommate-card-name a {
+  color: var(--color-text);
+  text-decoration: none;
+}
+
+.roommate-card-name a:hover {
+  text-decoration: underline;
+}
+
+/* The name link covers the whole card, so any click opens the profile. */
+.roommate-card-name a::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+}
+
+.roommate-card-name a:focus-visible {
+  outline: none;
+}
+
+.roommate-card:has(.roommate-card-name a:focus-visible) {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+}
+
+.roommate-card-move-in,
+.roommate-card-budget,
+.roommate-card-areas,
+.roommate-card-bio {
+  margin: 0;
+  color: var(--color-muted);
+  font-size: 14px;
+  line-height: 20px;
+}
+
+.roommate-card-budget strong {
+  color: var(--color-text);
+  font-size: 20px;
+  line-height: 28px;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+
+.roommate-card-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 4px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.roommate-card-tags li {
+  padding: 2px 8px;
+  border-radius: var(--radius-sm);
+  background: var(--color-surface-2);
+  color: var(--color-muted);
+  font-size: 12px;
+  line-height: 16px;
+  font-weight: 600;
+}
+
+/* Only the start of the bio; the full text is on the profile page. */
+.roommate-card-bio {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  overflow: hidden;
+}

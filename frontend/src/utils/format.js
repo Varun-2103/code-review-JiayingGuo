@@ -1,6 +1,6 @@
 // Dates are saved as midnight UTC, so they are always shown in UTC.
 // Otherwise Boston (UTC-5) would show Jan 1 as Dec 31.
-function formatDate(iso) {
+export function formatDate(iso) {
   return new Date(iso).toLocaleDateString("en-US", {
     timeZone: "UTC",
     month: "short",
