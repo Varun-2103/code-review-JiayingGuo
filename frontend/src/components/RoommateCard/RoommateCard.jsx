@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import { formatDate, formatRent } from "../../utils/format.js";
 import {
@@ -9,8 +10,9 @@ import {
 } from "../../utils/roommateLabels.js";
 import "./RoommateCard.css";
 
-// One roommate profile in the search grid. The whole card opens the profile.
-function RoommateCard({ roommate }) {
+// One roommate profile in a grid. The whole card opens the profile.
+// `children` adds buttons under the card (used on the My profile page).
+function RoommateCard({ roommate, children }) {
   return (
     <article className="roommate-card">
       <header className="roommate-card-head">
@@ -39,12 +41,14 @@ function RoommateCard({ roommate }) {
       </ul>
 
       <p className="roommate-card-bio">{roommate.bio}</p>
+      {children && <div className="roommate-card-actions">{children}</div>}
     </article>
   );
 }
 
 RoommateCard.propTypes = {
   roommate: roommateShape.isRequired,
+  children: PropTypes.node,
 };
 
 export default RoommateCard;

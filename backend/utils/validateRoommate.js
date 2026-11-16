@@ -70,3 +70,13 @@ export function validateRoommate(body) {
     },
   };
 }
+
+// Body of PATCH /api/roommates/:id/visibility. Only a real true or false
+// is accepted, not "true" or 1.
+export function validateVisibility(body) {
+  const hidden = body?.hidden;
+  if (typeof hidden !== "boolean") {
+    return { error: "Hidden must be true or false" };
+  }
+  return { value: hidden };
+}

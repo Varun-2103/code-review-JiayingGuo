@@ -1,0 +1,52 @@
+.my-profile-header {
+  margin-bottom: 24px;
+}
+
+.my-profile-header h1 {
+  margin: 0 0 4px;
+  font-size: 30px;
+  line-height: 36px;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+.my-profile-header p {
+  margin: 0;
+  font-size: 14px;
+  line-height: 20px;
+}
+
+.my-profile-page > .error-message {
+  margin-bottom: 16px;
+}
+
+/* One profile, so keep the card about as wide as in the search grid. */
+.my-profile-card {
+  max-width: 420px;
+}
+
+.my-profile-status {
+  margin: 0 0 8px;
+}
+
+/* Shown before the profile is created. */
+.my-profile-empty {
+  display: grid;
+  gap: 8px;
+  justify-items: start;
+  padding: 40px;
+  border-radius: var(--radius-lg);
+  background: var(--color-surface);
+}
+
+.my-profile-empty h2 {
+  margin: 0;
+  font-size: 20px;
+  line-height: 28px;
+  font-weight: 600;
+}
+
+.my-profile-empty p {
+  margin: 0 0 8px;
+  color: var(--color-muted);
+}

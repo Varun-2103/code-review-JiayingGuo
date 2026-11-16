@@ -35,6 +35,7 @@ function NavBar() {
           <NavLink to="/sublets/new">Post a sublet</NavLink>
           <NavLink to="/roommates">Find a roommate</NavLink>
           {user && <NavLink to="/my-listings">My listings</NavLink>}
+          {user && <NavLink to="/my-profile">My profile</NavLink>}
         </nav>
 
         <div className="navbar-account">

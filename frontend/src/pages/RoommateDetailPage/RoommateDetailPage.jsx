@@ -1,7 +1,11 @@
 import { useEffect, useState } from "react";
 import { Link, useLocation, useNavigate, useParams } from "react-router-dom";
 import useAuth from "../../context/useAuth.js";
-import { deleteRoommate, getRoommate } from "../../api/roommatesApi.js";
+import {
+  deleteRoommate,
+  getRoommate,
+  setRoommateHidden,
+} from "../../api/roommatesApi.js";
 import { formatDate, formatRent } from "../../utils/format.js";
 import {
   PETS_LABELS,
@@ -44,13 +48,29 @@ function RoommateDetailPage() {
     };
   }, [id, key]);
 
+  async function handleToggleHidden() {
+    setBusy(true);
+    setActionError("");
+    try {
+      const updated = await setRoommateHidden(
+        result.data._id,
+        !result.data.hidden,
+      );
+      setResult((r) => ({ ...r, data: updated }));
+    } catch (err) {
+      setActionError(err.message);
+    } finally {
+      setBusy(false);
+    }
+  }
+
   async function handleDelete() {
     if (!window.confirm("Delete your profile? This cannot be undone.")) return;
     setBusy(true);
     setActionError("");
     try {
       await deleteRoommate(result.data._id);
-      navigate("/roommates");
+      navigate("/my-profile");
     } catch (err) {
       setActionError(err.message);
       setBusy(false);
@@ -160,7 +180,18 @@ function RoommateDetailPage() {
                 </p>
               )}
               <div className="roommate-detail-actions">
-                <Link to={`/roommates/${profile._id}/edit`} className="button">
+                <button
+                  type="button"
+                  className="button"
+                  onClick={handleToggleHidden}
+                  disabled={busy}
+                >
+                  {profile.hidden ? "Show in search" : "Hide from search"}
+                </button>
+                <Link
+                  to={`/roommates/${profile._id}/edit`}
+                  className="button button-secondary"
+                >
                   Edit
                 </Link>
                 <button

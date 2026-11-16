@@ -3,7 +3,10 @@ import { ObjectId } from "mongodb";
 import requireAuth from "../middleware/requireAuth.js";
 import httpError from "../utils/httpError.js";
 import { buildRoommateQuery } from "../utils/buildRoommateQuery.js";
-import { validateRoommate } from "../utils/validateRoommate.js";
+import {
+  validateRoommate,
+  validateVisibility,
+} from "../utils/validateRoommate.js";
 import {
   deleteRoommate,
   findRoommateByAuthor,
@@ -43,6 +46,14 @@ router.get("/", async (req, res) => {
   const query = buildRoommateQuery(req.query);
   if (query.error) throw httpError(400, query.error);
   res.json(await searchRoommates(query));
+});
+
+// GET /api/roommates/mine (must stay above /:id)
+// The logged-in student's own profile, hidden or not, or null if they have
+// none yet.
+router.get("/mine", requireAuth, async (req, res) => {
+  const profile = await findRoommateByAuthor(req.user._id);
+  res.json(profile && { ...profile, isOwner: true, contactHidden: false });
 });
 
 // GET /api/roommates/:id (routes like /mine must stay above this one)
@@ -103,6 +114,18 @@ router.put("/:id", requireAuth, async (req, res) => {
   if (error) throw httpError(400, error);
 
   const updated = await updateRoommate(profile._id, value);
+  res.json({ ...updated, isOwner: true, contactHidden: false });
+});
+
+// PATCH /api/roommates/:id/visibility
+// { hidden: true } hides the profile from search, { hidden: false } shows it
+// again. This is the only route that changes hidden.
+router.patch("/:id/visibility", requireAuth, async (req, res) => {
+  const profile = await findOwnRoommate(req);
+  const { error, value } = validateVisibility(req.body);
+  if (error) throw httpError(400, error);
+
+  const updated = await updateRoommate(profile._id, { hidden: value });
   res.json({ ...updated, isOwner: true, contactHidden: false });
 });
 
