@@ -1,18 +1,67 @@
-.roommates-page h1 {
-  margin: 0 0 24px;
+/* Same layout as the sublet search: filters on the left, results on the right. */
+.roommates-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.roommates-header h1 {
+  margin: 0;
   font-size: 30px;
   line-height: 36px;
   font-weight: 600;
   letter-spacing: -0.02em;
 }
 
-.roommates-empty {
-  padding: 40px;
-  border-radius: var(--radius-lg);
-  background: var(--color-surface);
-  color: var(--color-muted);
+.roommates-layout {
+  display: grid;
+  grid-template-columns: 300px minmax(0, 1fr);
+  gap: 32px;
+  align-items: start;
 }
 
-.roommates-empty p {
-  margin: 0;
+/* Stays in view below the floating nav bar. On a short screen the filters
+   scroll on their own so the Search button can always be reached. */
+.roommates-sidebar {
+  position: sticky;
+  top: 96px;
+  max-height: calc(100dvh - 112px);
+  overflow-y: auto;
+  border-radius: var(--radius-lg);
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-hover) transparent;
+}
+
+.roommates-count {
+  margin: 0 0 16px;
+  color: var(--color-muted);
+  font-size: 14px;
+  line-height: 20px;
+}
+
+.roommates-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 260px), 1fr));
+  gap: 24px;
+  transition: opacity 300ms var(--ease);
+}
+
+.roommates-grid.is-loading {
+  opacity: 0.5;
+}
+
+@media (max-width: 760px) {
+  .roommates-layout {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 24px;
+  }
+
+  .roommates-sidebar {
+    position: static;
+    max-height: none;
+    overflow-y: visible;
+  }
 }
