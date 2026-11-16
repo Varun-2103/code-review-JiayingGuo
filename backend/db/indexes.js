@@ -12,4 +12,14 @@ export async function createIndexes() {
     sublets.createIndex({ authorId: 1 }),
     sublets.createIndex({ startDate: 1, endDate: 1 }),
   ]);
+
+  const roommates = db.collection("roommates");
+  await Promise.all([
+    // One profile per student.
+    roommates.createIndex({ authorId: 1 }, { unique: true }),
+    roommates.createIndex({ hidden: 1, budget: 1 }),
+    // Multikey index: matches a profile if any preferred neighborhood matches.
+    roommates.createIndex({ neighborhoods: 1 }),
+    roommates.createIndex({ moveInDate: 1 }),
+  ]);
 }
