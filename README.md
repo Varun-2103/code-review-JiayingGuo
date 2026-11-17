@@ -82,10 +82,10 @@ On a phone:
 
 ### Slides
 
-| Author      | Slides                                                                                                                | Slides presentation                                                                             |
-| ----------- | --------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- |
-| Jiaying Guo | [Google Slides](https://docs.google.com/presentation/d/1afbz4ZV1ONuz97Up50KFeHn6-_NBZc4-eR_-MSkoPNQ/edit?usp=sharing) | [Video](https://drive.google.com/file/d/12_3IDjP76QZK2xlkVfPEhb4J76QjS0cF/view?usp=sharing)     |
-| Yanli Wang  | [Google Slides](https://drive.google.com/drive/folders/1BhFrhYaWvC7Awt5wX8JZcn-sODwnkNa8)                       | [Video](https://drive.google.com/drive/folders/1BhFrhYaWvC7Awt5wX8JZcn-sODwnkNa8) |
+| Author      | Slides                                                                                                                | Slides presentation                                                                           |
+| ----------- | --------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- |
+| Jiaying Guo | [Google Slides](https://docs.google.com/presentation/d/1afbz4ZV1ONuz97Up50KFeHn6-_NBZc4-eR_-MSkoPNQ/edit?usp=sharing) | [Video](https://drive.google.com/file/d/12_3IDjP76QZK2xlkVfPEhb4J76QjS0cF/view?usp=sharing)   |
+| Yanli Wang  | [Google Slides](https://drive.google.com/drive/folders/1BhFrhYaWvC7Awt5wX8JZcn-sODwnkNa8?usp=sharing)                 | [Video](https://drive.google.com/drive/folders/1BhFrhYaWvC7Awt5wX8JZcn-sODwnkNa8?usp=sharing) |
 
 ## How to Use
 
