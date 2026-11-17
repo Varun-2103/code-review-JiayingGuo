@@ -78,6 +78,14 @@ On a phone:
 
 - Deployed app: <https://subletboard.onrender.com>
 - Design document and mockups: [design/DesignDocument.md](design/DesignDocument.md)
+- Demo video: <https://youtu.be/ZEBFYs22h-U>
+
+### Slides
+
+| Author      | Slides                                                                                                                | Slides presentation                                                                         |
+| ----------- | --------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- |
+| Jiaying Guo | [Google Slides](https://docs.google.com/presentation/d/1afbz4ZV1ONuz97Up50KFeHn6-_NBZc4-eR_-MSkoPNQ/edit?usp=sharing) | [Video](https://drive.google.com/file/d/12_3IDjP76QZK2xlkVfPEhb4J76QjS0cF/view?usp=sharing) |
+| Yanli Wang  | Pending                                                                                                               | Pending                                                                                     |
 
 ## How to Use
 
